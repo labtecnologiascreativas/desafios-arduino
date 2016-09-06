@@ -2,24 +2,25 @@
 #include <Adafruit_MotorShield.h>
 #include "utility/Adafruit_PWMServoDriver.h"
 
+// Crea el objeto motor shield
 // Create the motor shield object with the default I2C address
 Adafruit_MotorShield AFMS = Adafruit_MotorShield(); 
 // Or, create it with a different I2C address (say for stacking)
 // Adafruit_MotorShield AFMS = Adafruit_MotorShield(0x61); 
 
-// Select which 'port' M1, M2, M3 or M4. In this case, M1
+// Selecciona el 'puerto' ('port' en inglés) M1, M2, M3 or M4. En este caso, M1
 Adafruit_DCMotor *myMotor = AFMS.getMotor(1);
-// You can also make another motor on port M2
+// También podés poner otro motor en el puerto M2
 //Adafruit_DCMotor *myOtherMotor = AFMS.getMotor(2);
 
 void setup() {
   AFMS.begin();  // create with the default frequency 1.6KHz
   //AFMS.begin(1000);  // OR with a different frequency, say 1KHz
   
-  // Set the speed to start, from 0 (off) to 255 (max speed)
+  // Indica la velocidad para comenzar, de 0 (off) a 255 (max velocidad)
   myMotor->setSpeed(150);
   myMotor->run(FORWARD);
-  // turn on motor
+  // prende el motor
   myMotor->run(RELEASE);
 }
 
