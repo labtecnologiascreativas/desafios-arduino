@@ -5,27 +5,29 @@
 
 #include <Servo.h> 
  
-Servo myservo;  // create servo object to control a servo 
-                // a maximum of eight servo objects can be created 
+Servo myservo;  // crea un objeto "servo" para controlar el servo motor  
+                // puede ser creado un máximo de 8 objetos "servo" 
  
-int pos = 0;    // variable to store the servo position 
+int pos = 0;    // en esta variable guardamos la posición del servo motor 
  
 void setup() 
 { 
-  myservo.attach(9);  // attaches the servo on pin 9 to the servo object 
+  myservo.attach(9);  // conecta el servo conectado al pin 9 al objeto "servo" 
 } 
  
  
 void loop() 
 { 
-  for(pos = 0; pos < 180; pos += 1)  // goes from 0 degrees to 180 degrees 
-  {                                  // in steps of 1 degree 
-    myservo.write(pos);              // tell servo to go to position in variable 'pos' 
-    delay(15);                       // waits 15ms for the servo to reach the position 
+  for(pos = 0; pos < 180; pos += 1)  // va de 0 grados a 180 grados 
+  {                                  // en pasos de 1 grado 
+    myservo.write(pos);              // le dice al servo que vaya a la posición de la 
+				     //	variable 'pos' 
+    delay(15);                       // espera 15ms hasta que el servo alcance la posicion 
   } 
-  for(pos = 180; pos>=1; pos-=1)     // goes from 180 degrees to 0 degrees 
+  for(pos = 180; pos>=1; pos-=1)     // va de 180 grados a 0 grados 
   {                                
-    myservo.write(pos);              // tell servo to go to position in variable 'pos' 
-    delay(15);                       // waits 15ms for the servo to reach the position 
+    myservo.write(pos);               // le dice al servo que vaya a la posición de la 
+				     //	variable 'pos' 
+    delay(15);                       // espera 15ms hasta que el servo alcance la posicion 
   } 
 } 
