@@ -1,24 +1,23 @@
 /*
   Blink
-  Turns on an LED on for one second, then off for one second, repeatedly.
- 
-  This example code is in the public domain.
+  Prende un LED por un segundo, luego lo apaga por otro segundo, y lo repite. 
+  Este código de ejemplo es de dominio público
  */
  
-// Pin 13 has an LED connected on most Arduino boards.
-// give it a name:
+// El Pin 13 tiene un LED conectado en la mayoría de las placas Arduino
+// Le ponemos un nombre, en este caso "led":
 int led = 13;
 
-// the setup routine runs once when you press reset:
+// Aqui escribimos la rutina inicial:
 void setup() {                
-  // initialize the digital pin as an output.
+  // inicializamos el pin como salida (OUTPUT en inglés)
   pinMode(led, OUTPUT);     
 }
 
-// the loop routine runs over and over again forever:
+// Aquí escribimos lo que se va a repetir:
 void loop() {
-  digitalWrite(led, HIGH);   // turn the LED on (HIGH is the voltage level)
-  delay(1000);               // wait for a second
-  digitalWrite(led, LOW);    // turn the LED off by making the voltage LOW
-  delay(2000);               // wait for a second
+  digitalWrite(led, HIGH);   // Prende el LED (HIGH es "prendido")
+  delay(1000);               // espera un segundo
+  digitalWrite(led, LOW);    // apaga el LED (LOW es "apagado")
+  delay(2000);               // espera un segundo
 }
