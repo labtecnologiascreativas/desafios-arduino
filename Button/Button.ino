@@ -1,17 +1,15 @@
 /*
-  Button
+  Button ("Botón")
  
  Turns on and off a light emitting diode(LED) connected to digital  
  pin 13, when pressing a pushbutton attached to pin 2. 
  
+ Prende y apaga un LED (Diodo Emisor de Luz) conectado al pin digital 13, cuando se presiona el botón pulsador conectado al pin 2
  
- The circuit:
- * LED attached from pin 13 to ground 
- * pushbutton attached to pin 2 from +5V
- * 10K resistor attached to pin 2 from ground
- 
- * Note: on most Arduinos there is already an LED on the board
- attached to pin 13.
+ El Circuito:
+ * Un LED conectado al pin 13 y a tierra (gnd)
+ * Un botón pulsador conectado al pin 2 y a +5V
+ * Una resistencia de 10k conectada al pin 2 y a tierra (gnd)
  
  
  created 2005
@@ -24,25 +22,24 @@
  http://www.arduino.cc/en/Tutorial/Button
  */
 
-// constants won't change. They're used here to 
-// set pin numbers:
-const int buttonPin = 2;     // the number of the pushbutton pin
-const int ledPin =  13;      // the number of the LED pin
+// las "constantes" no cambian, su usan aquí para
+// definir los numeros de pin:
+const int buttonPin = 2;     // el numero de pin del botón pulsador
+const int ledPin =  13;      // el numero de pin del LED
 
-// variables will change:
-int buttonState = 0;         // variable for reading the pushbutton status
+// las "variables" cambian:
+int buttonState = 0;         // variable para leer el estado del botón
 
 void setup() {
-  // initialize the LED pin as an output:
+  // inicializa el pin del LED como salida (OUTPUT):
   pinMode(ledPin, OUTPUT);      
-  // initialize the pushbutton pin as an input:
+  // inicializa el pin del botón pulsador como entrada (INPUT):
   pinMode(buttonPin, INPUT);     
 }
 
 void loop(){
-  // read the state of the pushbutton value:
-  
-  
+  // lee el estado del botón pulsador:
+    
   buttonState = digitalRead(buttonPin);
 
   if (buttonState == HIGH) {       
