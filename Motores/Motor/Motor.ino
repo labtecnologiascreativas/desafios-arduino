@@ -1,7 +1,7 @@
 #include <MotorShield.h>
 
 const int ledPin = 13;
-MS_DCMotor motor(MOTOR_A);
+MS_DCMotor motor(MOTOR_B);
 
 void setup() {
   pinMode(ledPin,OUTPUT);
