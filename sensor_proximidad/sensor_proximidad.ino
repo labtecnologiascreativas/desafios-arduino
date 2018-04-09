@@ -1,6 +1,5 @@
  /*
-  Basado en el sketch Ping))) Sensor, de David A. Mellis (http://www.arduino.cc/en/Tutorial/Ping)
-
+  
   El sensor emite un pulso ultrasónico que luego es recibido y leído por el mismo, 
   de esa manera podemos calcular la distancia de un objeto.
   
@@ -8,11 +7,17 @@
 
 // las "constantes" no cambian, su usan aquí para
 // definir los numeros de pin:
-const int pingPin = 7;
+const int trigPin = 7;
+const int echoPin= 8;
 
 void setup() {
   // inicializamos la comunicación del puerto Serial:
   Serial.begin(9600);
+  // Establecemos el modo del pin "trigger" como salida (OUTPUT)
+  pinMode(trigPin, OUTPUT);
+  // Establecemos el modo del pin "echo" como entrada (INPUT)
+  pinMode(echoPin, INPUT);
+
 }
 
 void loop() {
@@ -22,17 +27,15 @@ void loop() {
 
   // el pulso HIGH es disparado por 5 microsegundos
   // antes enviamos un pulso LOW para asegurarnos un pulso HIGH claro
-  pinMode(pingPin, OUTPUT);
-  digitalWrite(pingPin, LOW);
+  digitalWrite(trigPin, LOW);
   delayMicroseconds(2);
-  digitalWrite(pingPin, HIGH);
+  digitalWrite(trigPin, HIGH);
   delayMicroseconds(5);
-  digitalWrite(pingPin, LOW);
+  digitalWrite(trigPin, LOW);
 
-  // El mismo pin es usado para leer la señal de vuelta: un pulso HIGH cuya duración
+  // El pin "echo" es usado para leer la señal de vuelta: un pulso HIGH cuya duración
   // es el tiempo que le lleva alcanzar un objeto y volver
-  pinMode(pingPin, INPUT);
-  duration = pulseIn(pingPin, HIGH);
+  duration = pulseIn(echoPin, HIGH);
 
   // convertimos el tiempo a distancia (microsegundos a centímetros)
   cm = microsecondsToCentimeters(duration);
