@@ -7,8 +7,8 @@
 
 // las "constantes" no cambian, su usan aquí para
 // definir los numeros de pin:
-const int trigPin = 7;
-const int echoPin= 8;
+const int trigPin = 8;
+const int echoPin= 7;
 
 void setup() {
   // inicializamos la comunicación del puerto Serial:
