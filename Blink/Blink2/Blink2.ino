@@ -1,6 +1,6 @@
 /*
-  Blink
-  Prende un LED por un segundo, luego lo apaga por otro segundo, y lo repite.
+  Blink 2
+  Parpadea varios leds de forma sequencial utilizando una funcion.
   Este código de ejemplo es de dominio público
  */
 
