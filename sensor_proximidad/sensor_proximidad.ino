@@ -1,8 +1,8 @@
  /*
-  
-  El sensor emite un pulso ultrasónico que luego es recibido y leído por el mismo, 
+  Este código de ejemplo es de dominio público.
+
+  El sensor emite un pulso ultrasónico que luego es recibido y leído por el mismo,
   de esa manera podemos calcular la distancia de un objeto.
-  
 */
 
 // las "constantes" no cambian, su usan aquí para
@@ -49,7 +49,7 @@ void loop() {
 
 long microsecondsToCentimeters(long microseconds) {
   // La velocidad del sonido es 349 m/s, o 29 microsugundos/centímetro
-  // El pulso viaja ida y vuelta, por lo tanto para obtener la distancia 
+  // El pulso viaja ida y vuelta, por lo tanto para obtener la distancia
   // al objeto, debemos tomar la mitad de la distancia recorrida
   return microseconds / 29 / 2;
 }

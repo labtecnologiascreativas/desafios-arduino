@@ -4,8 +4,11 @@
   Este código de ejemplo es de dominio público
  */
 
-// El Pin 13 tiene un LED conectado en la mayoría de las placas Arduino
-// Le ponemos un nombre, en este caso "led":
+/* Vamos a utilizar los pins 2, 3, 4 y 5.
+   Le ponemos un nombre a cada uno, para identificarlos en el código.
+   De esta forma, cuando hagamos referencia a "ledVerde" hablamos del pin 5.
+*/
+
 int ledVerde = 5;
 int ledRojo = 4;
 int ledAzul = 3;
@@ -13,7 +16,7 @@ int ledAmarillo = 2;
 
 // Aqui escribimos la rutina inicial:
 void setup() {
-  // inicializamos el pin como salida (OUTPUT en inglés)
+  // inicializamos los pins como salida (OUTPUT en inglés)
   pinMode(ledVerde, OUTPUT);
   pinMode(ledRojo, OUTPUT);
   pinMode(ledAzul, OUTPUT);
@@ -37,7 +40,7 @@ void parpadear(int led, int tiempoPrendido, int tiempoApagado) {
 }
 
 // Aquí escribimos lo que se va a repetir:
-//  Vamos a llamar a nuestra funcion "parpadear" variando el parametro LED cada vez.
+// Vamos a llamar a nuestra funcion "parpadear" variando el parametro LED cada vez.
 void loop() {
   parpadear(ledVerde, 250, 250);
   parpadear(ledRojo, 250, 250);

@@ -1,6 +1,6 @@
 // Adafruit Motor shield library
 // copyright Adafruit Industries LLC, 2009
-// this code is public domain, enjoy!
+// Este código de ejemplo es de dominio público, que lo disfrutes!
 
 // Incluimos la librería
 #include <AFMotor.h>
@@ -18,26 +18,26 @@ void setup() {
 void loop() {
   uint8_t i;
 
-  // El motor avanza (FORWARD) 
+  // El motor avanza (FORWARD)
   motor.run(FORWARD);
   for (i=0; i<255; i++) {
-    motor.setSpeed(i);  
+    motor.setSpeed(i);
     delay(10);
  }
- 
+
   for (i=255; i!=0; i--) {
-    motor.setSpeed(i);  
+    motor.setSpeed(i);
     delay(10);
  }
   // El motor retrocede (BACKWARD)
   motor.run(BACKWARD);
   for (i=0; i<255; i++) {
-    motor.setSpeed(i);  
+    motor.setSpeed(i);
     delay(10);
  }
- 
+
   for (i=255; i!=0; i--) {
-    motor.setSpeed(i);  
+    motor.setSpeed(i);
     delay(10);
  }
 
