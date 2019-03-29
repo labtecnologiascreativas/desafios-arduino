@@ -1,39 +1,40 @@
+
+// Incluimos la libreria Tone (Tono en ingles), que nos permite generar tonos musicales muy facilmente.
+#include <Tone.h>
+
+// Inicializamos la libreria Tone, creando un objeto llamado generadorDeTonos
+Tone generadorDeTonos;
+
 // Declaramos las Variables
-int positivoDelParlante = 3;  // Donde conectaremos el pin positivo del parlante (speaker)
-int sensorLDR = A0;
-int valorSensorLDR = 0;
-int tempo = 300;
-
-// Esta funcion reproducitTono recibe dos parametros
-// Tono y Duracion.
-// int nos indica que el parametro es un integer (numero entero)
-void reproducirTono(int tono, int duracion) {
-  for (long i = 0; i < duracion * 1000L; i += tono * 2) {
-    digitalWrite(positivoDelParlante, HIGH);
-    delayMicroseconds(tono);
-    digitalWrite(positivoDelParlante, LOW);
-    delayMicroseconds(tono);
-  }
-}
-
-void reproducirNota(int nota, int duracion) {
-  int tonos[] = { 1915, 1700, 1519, 1432, 1275, 1136, 1014, 956 };
-  reproducirTono(tonos[nota], duracion);
-
-}
+int parlante = A0;  // Donde conectaremos el pin positivo del parlante (speaker)
+int sensorLDR = A1; // Donde conectaremos el sensor LDR.
+int valorSensorLDR = 0; // Almacena el ultimo valor leido del sensor.
+int notaAReproducir = 0;// Almacen el ultimo valor de nota a reproducir.
+int tempo = 300; // Tiempo de espera entre una nota y la siguiente.
+// Vamos a armar un Array, que se diferencia del resto de las variables que vimos antes, por contener no uno, sino varios valores.
+// Para indicar que nuestra variable es un array, le agregamos los corchetes ("[]") al final del nombre.
+// Nuestro array va a contener 7 notas, DO, RE, MI, FA, SOL, LA y SI.
+// Para mas informacion sobre como funciona la libreria tone: https://github.com/bhagman/Tone
+int arrayDeNotas[] = { NOTE_C4, NOTE_D4, NOTE_E4, NOTE_F4, NOTE_G4, NOTE_A4, NOTE_B4 };
 
 void setup() {
-  pinMode(positivoDelParlante, OUTPUT);
-    Serial.begin(9600);
+  // Inicializamos el generadorDeTonos, indicando en que pin conectamos el parlante.
+  generadorDeTonos.begin(parlante);
+  Serial.begin(9600);
 }
 
 void loop() {
-  // mapeo el valor del sensorLDR a valores entre 0 y 7, es decir, las notas del array
-  valorSensorLDR = map(analogRead(sensorLDR), 3 , 157, 0 , 7); 
+  // Leo el sensorLDR y guardo el valor en la variable
+  valorSensorLDR = analogRead(sensorLDR);
   // imprimo el valor en el monitor serial
   Serial.println(valorSensorLDR);
-  reproducirNota(valorSensorLDR,500);
-  //espera 1 milisegundo antes de tocar la proxima nota
-  delay(1);
+  
+  // mapeo el valor del sensorLDR a valores entre 0 y 7, es decir, la cantidad de notas en el arrayDeNotas.
+  notaAReproducir = map(valorSensorLDR, 0 , 255, 0 , 7); 
 
+  // Le decimos al generadorDeTonos que reproduzca la nota correspondiente.
+  generadorDeTonos.play(arrayDeNotas[notaAReproducir]);
+  
+  //esperamos antes de tocar la proxima nota
+  delay(tempo);
 }
