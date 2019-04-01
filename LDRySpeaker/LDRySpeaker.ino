@@ -30,10 +30,17 @@ void loop() {
   Serial.println(valorSensorLDR);
   
   // mapeo el valor del sensorLDR a valores entre 0 y 7, es decir, la cantidad de notas en el arrayDeNotas.
-  notaAReproducir = map(valorSensorLDR, 0 , 255, 0 , 7); 
+  notaAReproducir = map(valorSensorLDR, 380 , 980, 0 , 7); 
 
-  // Le decimos al generadorDeTonos que reproduzca la nota correspondiente.
-  generadorDeTonos.play(arrayDeNotas[notaAReproducir]);
+  // Si el sensor mide mas de 390
+  if (valorSensorLDR > 380) {
+    // Le decimos al generadorDeTonos que reproduzca la nota correspondiente.
+    generadorDeTonos.play(arrayDeNotas[notaAReproducir]);  
+  } else {
+    // sino, le decimos que haga silencio.
+    generadorDeTonos.stop();
+  }
+  
   
   //esperamos antes de tocar la proxima nota
   delay(tempo);
